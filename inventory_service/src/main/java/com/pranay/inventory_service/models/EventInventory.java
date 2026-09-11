@@ -3,6 +3,7 @@ package com.pranay.inventory_service.models;
 import java.time.Instant;
 import java.util.UUID;
 
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.Column;
@@ -49,6 +50,7 @@ public class EventInventory {
     private long version;
 
     @Column(name = "updated_at")
+    @UpdateTimestamp
     private Instant updatedAt;
 
     @PrePersist

@@ -18,15 +18,16 @@ import org.springframework.stereotype.Service;
 public class EventInventoryServiceImpl implements EventInventoryService {
 
     private final EventInventoryRepository eventInventoryRepository;
-    private final EventInventoryRequestDTO eventInventoryRequestDTO;
-    private final EventInventoryResponseDTO eventInventoryResponseDTO;
+//    private final EventInventoryRequestDTO eventInventoryRequestDTO;
+//    private final EventInventoryResponseDTO eventInventoryResponseDTO;
     private final EventInventoryRequestMapper eventInventoryRequestMapper;
     private final EventInventoryResponseMapper eventInventoryResponseMapper;
 
     @Override
     public EventInventoryResponseDTO createEventInventory(EventInventoryRequestDTO eventInventoryRequestDTO) {
         EventInventory createdInventory = eventInventoryRequestMapper.toEventInventoryEntity(eventInventoryRequestDTO);
-        return eventInventoryResponseMapper.toEventInventoryResponseDto(createdInventory);
+        EventInventory savedInventory = eventInventoryRepository.save(createdInventory);
+        return eventInventoryResponseMapper.toEventInventoryResponseDto(savedInventory);
     }
 
     @Override
