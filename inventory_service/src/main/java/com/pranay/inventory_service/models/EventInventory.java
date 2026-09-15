@@ -34,20 +34,20 @@ public class EventInventory {
     private UUID eventId;
 
     @Column(name = "total_capacity", nullable = false)
-    private int totalCapacity;
+    private Integer totalCapacity;
 
     @Column(name = "total_available")
-    private int totalAvailable;
+    private Integer totalAvailable;
 
     @Column(name = "reserved_stock", nullable = false)
-    private int reservedStock;
+    private Integer reservedStock;
 
     @Column(name = "sold_stock", nullable = false)
-    private int soldStock;
+    private Integer soldStock;
 
     @Version
     @Column(name = "version")
-    private long version;
+    private Long version;
 
     @Column(name = "updated_at")
     @UpdateTimestamp

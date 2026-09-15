@@ -10,5 +10,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EventInventoryUpdateDTO {
-    private int totalCapacity;
+    private Integer totalCapacity;
+
+    private Integer totalAvailable;
+
+    private Integer reservedStock;
+
+    private Integer soldStock;
 }
