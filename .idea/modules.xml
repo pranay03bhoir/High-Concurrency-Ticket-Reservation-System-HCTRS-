@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/booking_gateway/booking_gateway.iml" filepath="$PROJECT_DIR$/booking_gateway/booking_gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ticket-reservation.iml" filepath="$PROJECT_DIR$/.idea/ticket-reservation.iml" />
     </modules>
   </component>
