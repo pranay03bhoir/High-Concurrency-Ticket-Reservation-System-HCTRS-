@@ -22,7 +22,8 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/generate-token**").permitAll()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/v1/dev/**").permitAll()
                         .requestMatchers("/api/v1/reserve/**").authenticated()
                         .anyRequest().authenticated()
                 ).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)

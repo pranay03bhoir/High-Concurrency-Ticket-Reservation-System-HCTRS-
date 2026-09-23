@@ -12,12 +12,12 @@ import java.security.Principal;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/reserve")
 public class ReservationController {
 
     private final ReservationService reservationService;
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<String> reserveTicket(
             @RequestHeader("Idempotency-Key") String idempotencyKey,
             @RequestBody ReservationRequest request,

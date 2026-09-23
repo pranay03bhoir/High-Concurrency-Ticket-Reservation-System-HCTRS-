@@ -17,9 +17,10 @@ public class RedisConfig {
         return new StringRedisTemplate(redisConnectionFactory);
     }
 
+    @Bean
     public DefaultRedisScript<Long> reservationScript() {
         DefaultRedisScript<Long> script = new DefaultRedisScript<>();
-        script.setLocation(new ClassPathResource("/resources/scripts/reserve_ticket.lua"));
+        script.setLocation(new ClassPathResource("scripts/reserve_ticket.lua"));
         script.setResultType(Long.class);
         return script;
     }

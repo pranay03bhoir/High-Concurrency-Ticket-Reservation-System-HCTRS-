@@ -16,14 +16,14 @@ import java.util.UUID;
 public class ReservationServiceImpl implements ReservationService {
     private final DefaultRedisScript<Long> reservationScript;
     private final StringRedisTemplate stringRedisTemplate;
-    private final KafkaTemplate<String, ReservationEvent> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     private static final String TOPIC = "reservation.pending";
 
     @Override
     public Boolean reserveTicket(String eventId, String userId, String idempotencyKey, int quantity) {
 
-        String stockKey = "event" + eventId + ":tickets_available";
+        String stockKey = "event:" + eventId.trim() + ":tickets_available";
         // 1. Execute Lua Script atomically inside Redis
         Long result = stringRedisTemplate.execute(
                 reservationScript,                   // Lua Script
@@ -31,7 +31,7 @@ public class ReservationServiceImpl implements ReservationService {
                 String.valueOf(quantity)             // ARGV[1]
         );
 
-        if (result == null || result != 1L) {
+        if (result != 1L) {
             return false;
         }
 
