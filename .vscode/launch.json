@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "OrderPaymentServiceApplication",
+            "request": "launch",
+            "mainClass": "com.pranay.order_payment_service.OrderPaymentServiceApplication",
+            "projectName": "order_payment_service"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-ServiceDiscoveryApplication<service_discovery>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

@@ -4,7 +4,7 @@ A Java Spring Boot microservice project for reserving tickets reliably during hi
 
 ## Architecture
 
-![High-Concurrency Ticket Reservation Engine architecture](docs/High-Concurrency-Ticket-Reservation-Engine-v2.drawio.png)
+![High-Concurrency Ticket Reservation Engine architecture](docs/HCTRS%202026-09-29%2021.49.36.excalidraw.png)
 
 The system is organized around independently deployable services so traffic, inventory, ordering, and configuration can scale separately.
 
