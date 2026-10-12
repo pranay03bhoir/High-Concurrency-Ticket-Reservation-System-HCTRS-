@@ -2,7 +2,6 @@ package com.pranay.order_payment_service.exceptions;
 
 import com.pranay.order_payment_service.DTO.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,6 +18,16 @@ public class GlobalException {
                 HttpStatus.BAD_REQUEST.value(),
                 e.getMessage()),
                 HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> resourceNotFoundExceptionHandler(ResourceNotFoundException e, HttpServletRequest request) {
+        return new ResponseEntity<>(new ErrorResponse(
+                request.getRequestURI(),
+                HttpStatus.NOT_FOUND.toString(),
+                HttpStatus.NOT_FOUND.value(),
+                e.getMessage()),
+                HttpStatus.NOT_FOUND);
     }
 
 }

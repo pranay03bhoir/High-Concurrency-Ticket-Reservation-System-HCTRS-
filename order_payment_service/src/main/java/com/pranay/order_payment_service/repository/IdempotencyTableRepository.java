@@ -11,5 +11,6 @@ import java.util.UUID;
 public interface IdempotencyTableRepository extends JpaRepository<IdempotencyKeyTable, UUID> {
 
     IdempotencyKeyTable findIdempotencyKeyTableByKey(UUID key);
+    Boolean existsByKey(UUID key);
 
 }

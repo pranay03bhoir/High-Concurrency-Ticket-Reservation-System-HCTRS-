@@ -6,11 +6,19 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public interface IdempotencyKeysService {
 
-    IdempotencyKeyDto getIdempotencyKey(IdempotencyKeyDto idempotencyKeyDto);
+    Boolean getIdempotencyKey(IdempotencyKeyDto idempotencyKeyDto);
 
     PagedResponse<IdempotencyKeyDto> getAllIdempotencyKeys(Pageable pageable);
+
+    void recordInFlightKey(UUID key);
+
+    void finalizeKeyStatus(UUID key, int responseStatus);
+
+    Optional<Integer> getCachedStatus(UUID key);
 }
