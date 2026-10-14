@@ -30,4 +30,14 @@ public class GlobalException {
                 HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(ResourceAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> resourceAlreadyExistsExceptionHandler(ResourceAlreadyExistsException e, HttpServletRequest request) {
+        return new ResponseEntity<>(new ErrorResponse(
+                request.getRequestURI(),
+                HttpStatus.BAD_REQUEST.toString(),
+                HttpStatus.BAD_REQUEST.value(),
+                e.getMessage()),
+                HttpStatus.BAD_REQUEST);
+    }
+
 }

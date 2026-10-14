@@ -31,6 +31,9 @@ public class Orders {
     @Column(name = "event_id")
     private UUID eventId;
 
+    @Column(name = "reservation_id")
+    private String reservationId;
+
     @Column(name = "amount")
     private String amount;
 
