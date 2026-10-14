@@ -52,11 +52,9 @@ public class PaymentProcessingServiceImpl implements PaymentProcessingService {
                             .setCurrency("inr")
                             .setConfirm(true)
                             .putMetadata("userId", userId)
-                            .setAutomaticPaymentMethods(
-                                    PaymentIntentCreateParams.AutomaticPaymentMethods.builder()
-                                            .setEnabled(true)
-                                            .build()
-                            ).build();
+                            .setPaymentMethod("pm_card_visa")
+                            .setReturnUrl("https://localhost:8080/complete")
+                            .build();
             PaymentIntent intent = PaymentIntent.create(params, options);
 
             if ("succeeded".equalsIgnoreCase(intent.getStatus())) {
